@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testData>
+	<Sling>Sling</Sling>
+	<Support>Support</Support>
+	<Message>message hi how are you</Message>
+	<strBotMessage>Agent</strBotMessage>
+	<strEmailAgent>agentemail</strEmailAgent>
+	<strSlingBotAutoMsg>Hello! I'm SlingBot!</strSlingBotAutoMsg>
+
+</testData>

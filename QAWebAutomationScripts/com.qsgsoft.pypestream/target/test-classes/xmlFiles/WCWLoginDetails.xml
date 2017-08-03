@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testData>
+	<WCWPypemanagerLogin>autouser@yopmail.com</WCWPypemanagerLogin>
+	<WCWPypemanagerPassword>Pass@123</WCWPypemanagerPassword>
+	<AgentEmail>webchat_agent@yopmail.com</AgentEmail>
+	<AgentEmail1>endchat1@yopmail.com</AgentEmail1>
+	<PypemanagerSingleStream>singlestream@yopmail.com
+	</PypemanagerSingleStream>
+	<StrAdminLogin>qsgtest@yopmail.com</StrAdminLogin>
+	<StrAdminPass>pass@123</StrAdminPass>
+	<SingleSessionManager>webchatsinglesession@yopmail.com
+	</SingleSessionManager>
+	<SingleSessionAgent>SingleSessionAgent@yopmail.com</SingleSessionAgent>
+	<EmailData>www.yopmail.com</EmailData>
+</testData>

@@ -1,0 +1,60 @@
+package requirementGroup.WebChatWidget;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import lib.dataObject.WCWData;
+import lib.dataObject.WebData;
+import lib.page.Agent;
+import lib.page.ConfiguredWebsite;
+import lib.page.WebAdminTab;
+import lib.page.WebChatWidget;
+import lib.page.WebMessage;
+import lib.page.WebOverviewTab;
+import lib.page.WebSignUpAndSignIn;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+import qaframework.configuration.Configuration_Webchat;
+import qaframework.webElements.WaitTimeConstants;
+
+public class CustomizeAppearanceStep2 extends Configuration_Webchat {
+
+	// June 05 2017
+	@Test(priority = 13, description = "Verify that 'Floating' option is selected by default in configuration."
+			+ "\n Verify that 'Ratio' icon displayed between 'WIDGET HEIGHT' and 'WIDGET WIDTH'is locked by "
+			+ "default in '2. Customize widget appearance'")
+	public void FTS200152AndBQS200558() throws Exception {
+
+		TCID = "200154 And 200558";
+		strTO = "Verify that 'Floating' option is selected by default in configuration."
+				+ "\n Verify that 'Ratio' icon displayed between 'WIDGET HEIGHT' and 'WIDGET WIDTH'is locked by "
+				+ "default in '2. Customize widget appearance'";
+
+		// Object for test data
+		WCWData objWebTestData = new WCWData();
+
+		// Test Data
+		String strEmail = objWebTestData.pypemanager;
+		String strPassword = objWebTestData.pypemanagerpwd;
+
+		// mWeb.setUp();
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebAdminTab objWebAdminTab = new WebAdminTab(wdriver);
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		objWebSignUpAndSignIn.launchQALoginPage();
+
+		objWebSignUpAndSignIn.wLogin(strEmail);
+		objWebSignUpAndSignIn.wPassword(strPassword);
+		objWebSignUpAndSignIn.clickSignin();
+		objWebAdminTab.clickAdminTab();
+
+
+		gstrResult = "PASS";
+	}
+		
+}

@@ -1,0 +1,809 @@
+package requirementGroup.WebChatWidget;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import lib.dataObject.WCWData;
+import lib.dataObject.WebData;
+import lib.page.Agent;
+import lib.page.ConfiguredWebsite;
+import lib.page.WebAdminTab;
+import lib.page.WebChatWidget;
+import lib.page.WebMessage;
+import lib.page.WebOverviewTab;
+import lib.page.WebSignUpAndSignIn;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.Test;
+
+import qaframework.configuration.Configuration_Webchat;
+import qaframework.webElements.WaitTimeConstants;
+
+public class CustomizeAppearanceStep2 extends Configuration_Webchat {
+
+	// June 05 2017
+	@Test(priority = 13, description = "Verify that 'Floating' option is selected by default in configuration."
+			+ "\n Verify that 'Ratio' icon displayed between 'WIDGET HEIGHT' and 'WIDGET WIDTH'is locked by "
+			+ "default in '2. Customize widget appearance'")
+	public void FTS200152AndBQS200558() throws Exception {
+
+		TCID = "200154 And 200558";
+		strTO = "Verify that 'Floating' option is selected by default in configuration."
+				+ "\n Verify that 'Ratio' icon displayed between 'WIDGET HEIGHT' and 'WIDGET WIDTH'is locked by "
+				+ "default in '2. Customize widget appearance'";
+
+		// Object for test data
+		WCWData objWebTestData = new WCWData();
+
+		// Test Data
+		String strEmail = objWebTestData.pypemanager;
+		String strPassword = objWebTestData.pypemanagerpwd;
+
+		// mWeb.setUp();
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebAdminTab objWebAdminTab = new WebAdminTab(wdriver);
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		objWebSignUpAndSignIn.launchQALoginPage();
+
+		objWebSignUpAndSignIn.wLogin(strEmail);
+		objWebSignUpAndSignIn.wPassword(strPassword);
+		objWebSignUpAndSignIn.clickSignin();
+		objWebAdminTab.clickAdminTab();
+		objWebAdminTab.clickOnWebChatWidget();
+		objWebChatWidget.clickOnCreateANewChatWidget();
+		objWebChatWidget.selectStream(WebData.streamAlert);
+		objWebChatWidget.clickOnNext();
+		objWebChatWidget.verFloatingRadioSelectedByDefault();
+		objWebChatWidget.verRatioButtonDisplayedInBetweenHieghtAndWidth();
+
+		gstrResult = "PASS";
+	}
+
+	// June 06 2017
+	@Test(priority = 14, description = "Verify that widget is set to default dimensions of 600px height and 500px width.")
+	public void BQS200157() throws Exception {
+
+		TCID = "200157";
+		strTO = "Verify that widget is set to default dimensions of 600px height and 500px width.";
+
+		// mWeb.setUp();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		
+		objWebChatWidget.verCustomizeScreen();
+		objWebChatWidget.verWidthHightByDefault600();
+		objWebChatWidget.verWidthWidthByDefault500();
+
+		gstrResult = "PASS";
+	}
+	
+	
+
+	// June 06 2017
+	@Test(priority = 15, description = "Verify that background color of widget header is by default set to '#797979'."
+			+ "\n	Verify that background color of Agent text area is set to '#E5E5E5' by default"
+			+ "\n	Verify that background color of Consumer text area is set to '#2E7DE1' by default"
+			+ "\n 	Verify that text color of Widget header is by default set to white"
+			+ "\n 	Verify that text color of Agent message is set to black by default"
+			+ "\n 	Verify that text color of Consumer message is set to white by default"
+			+ "\n	Verify that Chatbot smart options has the same as background color i.e.'#2E7DE1' by default")
+	public void FTS200169And200172And200174And200171And200173And200177() throws Exception {
+
+		TCID = "200169And200172And200174And200171And200173And200177";
+		strTO = "Verify that background color of widget header is by default set to '#797979'."
+				+ "\n	Verify that background color of Agent text area is set to '#E5E5E5' by default"
+				+ "\n	Verify that background color of Consumer text area is set to '#2E7DE1' by default"
+				+ "\n 	Verify that text color of Widget header is by default set to white"
+				+ "\n 	Verify that text color of Agent message is set to black by default"
+				+ "\n 	Verify that text color of Consumer message is set to white by default"
+				+ "\n	Verify that Chatbot smart options has the same as background color i.e.'#2E7DE1' by default";
+
+		// mWeb.setUp();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		objWebChatWidget.verWidgetColorByDefaultGray();
+		objWebChatWidget.verAgentBubbleByDefaultLightGray();
+		objWebChatWidget.verUserBubbleByDefaultBlue();
+		objWebChatWidget.verWidgetHeaderTextByDefaultWhite();
+		objWebChatWidget.verTextColorOfAgentMessageBlackByDefault();
+		objWebChatWidget.verTextColorOfConsumerMessageWhiteByDefault();
+		objWebChatWidget.verSmartChatBotOptionDefault();
+
+		gstrResult = "PASS";
+	}
+
+	
+	@Test(priority = 16, description = "Verify that 'Back' and 'Next' buttons are displayed at the bottom of the 'Customize appearance' page")
+	public void FTS200217() throws Exception {
+
+		TCID = "200217";
+		strTO = "Verify that 'Back' and 'Next' buttons are displayed at the bottom of the 'Customize appearance' page";
+
+		
+		// mWeb.setUp();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		objWebChatWidget.verBackAndNextButtonsInCostomizationPage();
+
+	}
+	// June 08 2017
+	@Test(priority = 17, description = "Verify that 'TEXT COLOR' drop down has only 2 colors i.e. White and black")
+	public void FTS200170() throws Exception {
+
+		TCID = "200170";
+		strTO = "Verify that 'TEXT COLOR' drop down has only 2 colors i.e. White and black";
+
+		// mWeb.setUp();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+
+		objWebChatWidget.clickOnArrow1();
+		objWebChatWidget.verWhiteAndBlackColorDis();
+		objWebChatWidget.clickOnReset();
+
+		objWebChatWidget.clickOnArrow2();
+		objWebChatWidget.verWhiteAndBlackColorDis();
+		objWebChatWidget.clickOnReset();
+
+		objWebChatWidget.clickOnArrow3();
+		objWebChatWidget.verWhiteAndBlackColorDis();
+
+		gstrResult = "PASS";
+	}
+
+	// June 06 2017
+	@Test(priority = 18, description = "Verify that all size and placement settings are reset to default when 'Reset' link is clicked")
+	public void BQS200165() throws Exception {
+
+		TCID = "200165";
+		strTO = "Verify that all size and placement settings are reset to default when 'Reset' link is clicked";
+
+		// mWeb.setUp();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		objWebChatWidget.selBottomLeftPosition(WebData.widgetPositionBottomLeft);
+		objWebChatWidget.clcikOnUnlockIcon();
+		objWebChatWidget.clickOnWidgetHeightField();
+		objWebChatWidget.enterValueMoreThan800();
+		objWebChatWidget.clickOnReset();
+		objWebChatWidget.verWidthHightByDefault600();
+		objWebChatWidget.verWidthWidthByDefault500();
+		objWebChatWidget.verDefaultPositionIsBottonRight();
+
+		gstrResult = "PASS";
+	}
+
+	// June 07 2017
+	@Test(priority = 19, description = "Verify that the height of the widget cannot exceed 800 pixels."
+			+ "\n Verify that the height of the widget cannot be less than 400 pixels."
+			+ "\n Verify that the width of the widget cannot exceed 600 pixels."
+			+ "\n Verify that the width of the widget cannot be less than 300 pixels."
+			+ "\n Verify that appropriate error 'Height should be between 400 and 800 pixels. Width should be between 300 and 600 pixels.'"
+			+ " is displayed when incorrect widget height and width is specified")
+	public void FTS200160And200161And200162And200163And200164() throws Exception {
+
+		TCID = "200160And200161And200162And200163And200164";
+		strTO = "Verify that the height of the widget cannot exceed 800 pixels."
+				+ "\n Verify that the height of the widget cannot be less than 400 pixels."
+				+ "\n Verify that the width of the widget cannot exceed 600 pixels."
+				+ "\n Verify that the width of the widget cannot be less than 300 pixels."
+				+ "\n Verify that appropriate error 'Height should be between 400 and 800 pixels. Width should be between 300 and 600 pixels.'"
+				+ " is displayed when incorrect widget height and width is specified";
+
+		// mWeb.setUp();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		objWebChatWidget.clcikOnUnlockIcon();
+		objWebChatWidget.clickOnWidgetHeightField();
+		objWebChatWidget.enterValueMoreThan800();
+		objWebChatWidget.clickOnWidgetWidthField();
+		objWebChatWidget.verHightErrorMessage();
+		objWebChatWidget.clickOnReset();
+		objWebChatWidget.clcikOnUnlockIcon();
+		objWebChatWidget.clickOnWidgetHeightField();
+		objWebChatWidget.enterValueLessThan400();
+		objWebChatWidget.clickOnWidgetWidthField();
+		objWebChatWidget.verHightErrorMessage();
+		objWebChatWidget.clickOnReset();
+
+		objWebChatWidget.clcikOnUnlockIcon();
+		objWebChatWidget.clickOnWidgetWidthField();
+		objWebChatWidget.enterValueMoreThan600();
+		objWebChatWidget.clickOnWidgetHeightField();
+		objWebChatWidget.verWidthErrorMessage();
+		objWebChatWidget.clickOnReset();
+		objWebChatWidget.clcikOnUnlockIcon();
+		objWebChatWidget.clickOnWidgetWidthField();
+		objWebChatWidget.enterValueLessThan300();
+		objWebChatWidget.clickOnWidgetHeightField();
+		objWebChatWidget.verWidthErrorMessage();
+		objWebChatWidget.clickOnReset();
+
+		objWebChatWidget.clcikOnUnlockIcon();
+		objWebChatWidget.clickOnWidgetHeightField();
+		objWebChatWidget.enterValueMoreThan800();
+		objWebChatWidget.clickOnWidgetWidthField();
+		objWebChatWidget.enterValueMoreThan600();
+		objWebChatWidget.clickOnWidgetHeightField();
+		objWebChatWidget.verHightErrorMessage();
+		objWebChatWidget.verWidthErrorMessage();
+		objWebChatWidget.clickOnReset();
+
+		gstrResult = "PASS";
+	}
+
+	// June 08 2017
+	@Test(priority = 20, description = "Verify that the height of the widget is altered accordingly when the corresponding value is altered."
+			+ "\n Verify that the width of the widget is altered accordingly when the corresponding value is altered.")
+	public void BQS200158And200159() throws Exception {
+
+		TCID = "200158And200159";
+		strTO = "Verify that the height of the widget is altered accordingly when the corresponding value is altered."
+				+ "\n Verify that the width of the widget is altered accordingly when the corresponding value is altered.";
+
+		// mWeb.setUp();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		objWebChatWidget.clickOnWidgetHeightField();
+		objWebChatWidget.enterValueInHeightField();
+		objWebChatWidget.verValueIsAlteredInWidthField();
+
+		objWebChatWidget.clickOnReset();
+		objWebChatWidget.clickOnWidgetWidthField();
+		objWebChatWidget.enterValueInWidthField();
+		objWebChatWidget.verValueIsAlteredInHightField();
+		objWebChatWidget.clickOnReset();
+
+		gstrResult = "PASS";
+	}
+
+	// feb 09 2017
+	@Test(priority = 21, description = "Verify that previously created widgets are unaffected when Widget setup is aborted.")
+	public void RTS200192() throws Exception {
+
+		TCID = "200192";
+		strTO = "Verify that previously created widgets are unaffected when Widget setup is aborted.";
+
+		// mWeb.setUp();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		objWebChatWidget.clickOnNext().clickOnClose();
+		objWebChatWidget// .scrollDownIcon()
+				.clickOnEditChatWidgetIcon("").enterChatWidgetName(WebData.widgetName).clickOnSaveChatWidgetIcon();
+		objWebChatWidget.clickOnCreateANewChatWidget1();
+		objWebChatWidget.selectStream(WebData.streamAlert).clickOnNext().clickOnCloseButtonOnConfiguringSettings();
+		objWebChatWidget.verPreviousWidget(WebData.widgetName);
+
+		gstrResult = "PASS";
+	}
+
+	// June 05 2017
+	@Test(priority = 22, description = "Verify that chat widget in configured site is displayed as a floating button when the option 'Floating' is selected in configuration."
+			+ "\n Verify that widget is positioned at the bottom right of the website when corresponding option is selected.")
+	public void BQS200150andBQS200153() throws Exception {
+
+		TCID = "200150 + 200153";
+		strTO = "Verify that chat widget in configured site is displayed as a floating button when the option 'Floating' is selected in configuration."
+				+ "\n Verify that widget is positioned at the bottom right of the website when corresponding option is selected.";
+
+		// Page objects
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+		ConfiguredWebsite objConfiguredWebsite = new ConfiguredWebsite(wdriver);
+
+		// Page Functions
+		objWebChatWidget.clickOnCreateANewChatWidget();
+		objWebChatWidget.selectStream(WebData.streamAlert);
+
+		objWebChatWidget.clickOnNext().clickOnNext().clickOnCopyCode();
+		objWebSignUpAndSignIn.launchConfiguredWebsite();
+		objConfiguredWebsite.enterCodeInTextArea().clickOnRunButton();
+
+		objConfiguredWebsite.verFloatingWebChatWidgetIcon();
+
+		gstrResult = "PASS";
+
+	}
+
+	// June 09 2017
+	@Test(priority = 23, description = "Verify that Admin is redirected to Step 1' when 'Back' button is clicked")
+	public void RTS200207() throws Exception {
+
+		TCID = "200207";
+		strTO = "Verify that Admin is redirected to Step 1 when 'Back' button is clicked";
+
+		// mWeb.setUp();
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebAdminTab objWebAdminTab = new WebAdminTab(wdriver);
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		objWebSignUpAndSignIn.launchQALoginPage();
+		objWebAdminTab.clickAdminTab();
+		objWebAdminTab.clickOnWebChatWidget();
+		objWebChatWidget.clickOnCreateANewChatWidget();
+		objWebChatWidget.selectStream(WebData.streamAlert);
+		objWebChatWidget.clickOnNext();
+		objWebChatWidget.clickOnBack();
+		objWebChatWidget.verConfiguringSettingsIsDis();
+
+		gstrResult = "PASS";
+	}
+
+	// June 05 2017
+	@Test(priority = 24, description = "Verify that widget is positioned at the bottom left of the webpage when corresponding option is selected."
+			+ "\n Verify that Admin can setup widget position by selecting position from 'Widget position drop down")
+	public void FTS200154And200168() throws Exception {
+
+		TCID = "200154 + And200168";
+		strTO = "Verify that widget is positioned at the bottom left of the webpage when corresponding option is selected."
+				+ "\n Verify that Admin can setup widget position by selecting position from 'Widget position drop down";
+
+		// Page objects
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+		ConfiguredWebsite objConfiguredWebsite = new ConfiguredWebsite(wdriver);
+
+		// Page Functions
+		objWebChatWidget.selectStream(WebData.streamAlert);
+		objWebChatWidget.clickOnNext();
+		objWebChatWidget.selBottomLeftPosition(WebData.widgetPositionBottomLeft);
+		objWebChatWidget.clickOnNext().clickOnCopyCode();
+		objWebSignUpAndSignIn.launchConfiguredWebsite();
+		objConfiguredWebsite.clearTextArea();
+		objConfiguredWebsite.enterCodeInTextArea().clickOnQaButton().clickOnRunButton();
+
+		objConfiguredWebsite.verWidgetAtBottomLeft();
+
+		gstrResult = "PASS";
+
+	}
+
+	// June 06 2017
+	@Test(priority = 25, description = "Verify that widget is positioned at the top right of the website when corresponding option is selected.")
+	public void BQS200155() throws Exception {
+
+		TCID = "200155";
+		strTO = "Verify that widget is positioned at the top right of the website when corresponding option is selected.";
+
+		// Page objects
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebAdminTab objWebAdminTab = new WebAdminTab(wdriver);
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+		ConfiguredWebsite objConfiguredWebsite = new ConfiguredWebsite(wdriver);
+
+		// Page Functions
+		objWebSignUpAndSignIn.launchQALoginPage();
+
+		objWebAdminTab.clickAdminTab();
+		objWebAdminTab.clickOnWebChatWidget();
+		objWebChatWidget.clickOnCreateANewChatWidget();
+		objWebChatWidget.selectStream(WebData.streamAlert);
+		objWebChatWidget.clickOnNext();
+		objWebChatWidget.selTopRightPosition(WebData.widgetPositionTopRight);
+		objWebChatWidget.clickOnNext().clickOnCopyCode();
+		objWebSignUpAndSignIn.launchConfiguredWebsite();
+		objConfiguredWebsite.clearTextArea();
+		objConfiguredWebsite.enterCodeInTextArea().clickOnQaButton().clickOnRunButton();
+
+		objConfiguredWebsite.verWidgetAtTopRight();
+
+		gstrResult = "PASS";
+
+	}
+
+	// June 06 2017
+	@Test(priority = 26, description = "Verify that widget is positioned at the top left of the webpage when corresponding option is selected.")
+	public void BQS200156() throws Exception {
+
+		TCID = "200156";
+		strTO = "Verify that widget is positioned at the top left of the webpage when corresponding option is selected.";
+
+		// Page objects
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebAdminTab objWebAdminTab = new WebAdminTab(wdriver);
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+		ConfiguredWebsite objConfiguredWebsite = new ConfiguredWebsite(wdriver);
+
+		// Page Functions
+		objWebSignUpAndSignIn.launchQALoginPage();
+
+		objWebAdminTab.clickAdminTab();
+		objWebAdminTab.clickOnWebChatWidget();
+		objWebChatWidget.clickOnCreateANewChatWidget();
+		objWebChatWidget.selectStream(WebData.streamAlert);
+		objWebChatWidget.clickOnNext();
+		objWebChatWidget.selTopLeftPosition(WebData.widgetPositionTopLeft);
+		objWebChatWidget.clickOnNext().clickOnCopyCode();
+		objWebSignUpAndSignIn.launchConfiguredWebsite();
+		objConfiguredWebsite.clearTextArea();
+		objConfiguredWebsite.enterCodeInTextArea().clickOnQaButton().clickOnRunButton();
+
+		objConfiguredWebsite.verWidgetAtTopLeft();
+
+		gstrResult = "PASS";
+
+	}
+
+	// June 06 2017
+	@Test(priority = 27, description = "Verify that Admin is able to modify widget colors")
+	public void BQS200178() throws Exception {
+
+		TCID = "200178";
+		strTO = "Verify that Admin is able to modify widget colors";
+
+		// Page objects
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebAdminTab objWebAdminTab = new WebAdminTab(wdriver);
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+		ConfiguredWebsite objConfiguredWebsite = new ConfiguredWebsite(wdriver);
+
+		// Page Functions
+		objWebSignUpAndSignIn.launchQALoginPage();
+		objWebAdminTab.clickAdminTab();
+		objWebAdminTab.clickOnWebChatWidget();
+		boolean b = true;
+		while (b) {
+			Thread.sleep(4000);
+			b = objWebChatWidget.deleteAllwidget();
+		}
+		objWebChatWidget.clickOnCreateANewChatWidget();
+		objWebChatWidget.selectStream(WebData.streamAlert);
+		objWebChatWidget.clickOnNext();
+		objWebChatWidget.enterwidgetColor();
+		objWebChatWidget.clickOnNext().clickOnCopyCode();
+		objWebSignUpAndSignIn.launchConfiguredWebsite();
+		objConfiguredWebsite.clearTextArea();
+		objConfiguredWebsite.enterCodeInTextArea().clickOnQaButton().clickOnRunButton();
+
+		objConfiguredWebsite.verWidgetColor();
+
+		objWebSignUpAndSignIn.launchQALoginPage();
+		objWebAdminTab.clickAdminTab();
+		objWebAdminTab.clickOnWebChatWidget();
+		objWebChatWidget.clickOnCustomizeOfLast().clickOnResetInColorSection();
+		objWebChatWidget.clickOnSaveInConfigureGeneralSettings();
+		objWebChatWidget.clickOnInstallCode().clickOnCopyCode();
+		objWebChatWidget.clickOnClose();
+		objWebSignUpAndSignIn.launchConfiguredWebsite();
+		objConfiguredWebsite.clearTextArea();
+		objConfiguredWebsite.enterCodeInTextArea().clickOnQaButton().clickOnRunButton();
+
+		objConfiguredWebsite.verDefaultWidgetColor();
+
+		gstrResult = "PASS";
+
+	}
+
+	// June 05 2017
+	@Test(priority = 28, description = "Verify that chat widget in configured site is displayed as anchored when the option 'Anchored' is selected in configuration.")
+	public void BQS200151() throws Exception {
+
+		TCID = "200151";
+		strTO = "Verify that chat widget in configured site is displayed as anchored when the option 'Anchored' is selected in configuration.";
+
+		// mWeb.setUp();
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebAdminTab objWebAdminTab = new WebAdminTab(wdriver);
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+		ConfiguredWebsite objConfiguredWebsite = new ConfiguredWebsite(wdriver);
+
+		objWebSignUpAndSignIn.launchQALoginPage();
+
+		// Page Functions
+		objWebAdminTab.clickAdminTab();
+		objWebAdminTab.clickOnWebChatWidget();
+		objWebChatWidget.clickOnCreateANewChatWidget();
+		objWebChatWidget.selectStream(WebData.streamAlert);
+		objWebChatWidget.clickOnNext();
+
+		objWebChatWidget.selAnchoredRadioBtn();// .selWidgetPosition(WebData.widgetPosition);
+		objWebChatWidget.clickOnNext().clickOnCopyCode().clickOnClose();
+
+		objWebSignUpAndSignIn.launchConfiguredWebsite();
+		objConfiguredWebsite.clearTextArea();
+		objConfiguredWebsite.enterCodeInTextArea().clickOnQaButton().clickOnRunButton();
+
+		objConfiguredWebsite.verAnchoredWebChatWidgetAtBottomRight();
+
+		gstrResult = "PASS";
+
+	}
+
+	// June 05 2017
+	@Test(priority = 29, description = "Verify that 'Widget appearance not customized' when all the changesmade in '2. Customize appearance (Chat widget 1)' is not saved")
+	public void FTS200209() throws Exception {
+
+		TCID = "200209";
+		strTO = "Verify that 'Widget appearance not customized' when all the changesmade in '2. Customize appearance (Chat widget 1)' is not saved";
+
+		// mWeb.setUp();
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebAdminTab objWebAdminTab = new WebAdminTab(wdriver);
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		objWebSignUpAndSignIn.launchQALoginPage();
+		objWebAdminTab.clickAdminTab();
+		objWebAdminTab.clickOnWebChatWidget();
+		boolean b = true;
+		while (b) {
+			Thread.sleep(4000);
+			b = objWebChatWidget.deleteAllwidget();
+		}
+		objWebChatWidget.clickOnCreateANewChatWidget();
+		objWebChatWidget.selectStream(WebData.streamAlert);
+		objWebChatWidget.clickOnNext();
+		objWebChatWidget.clickOnNext().clickOnCopyCode().clickOnClose();
+		objWebChatWidget.clickOnCustomizeOfLast();
+		objWebChatWidget.clickOnWidgetHeightField().enterValueInHeightField();
+		objWebChatWidget.clickOnWidgetWidthField().enterValueInWidthField();
+		objWebChatWidget.enterwidgetColor();
+		objWebChatWidget.clickOnCloseButtonOnConfiguringSettings();
+
+		objWebChatWidget.clickOnCustomizeOfLast();
+		objWebChatWidget.verFloatingRadioSelectedByDefault();
+		objWebChatWidget.verWidthHightByDefault600();
+		objWebChatWidget.verWidthWidthByDefault500();
+		objWebChatWidget.verWidgetColorByDefaultGray();
+		objWebChatWidget.verAgentBubbleByDefaultLightGray();
+		objWebChatWidget.verUserBubbleByDefaultBlue();
+		objWebChatWidget.verWidgetHeaderTextByDefaultWhite();
+		objWebChatWidget.verTextColorOfAgentMessageBlackByDefault();
+		objWebChatWidget.verTextColorOfConsumerMessageWhiteByDefault();
+		objWebChatWidget.clickOnCloseButtonOnConfiguringSettings();
+
+		gstrResult = "PASS";
+	}
+
+	
+
+
+	// June 05 2017
+	@Test(priority = 30, description = "Verify that drop down icon is displayed besides each chat widgets when there are multiple web chat widgets created")
+	public void FTS200213() throws Exception {
+
+		TCID = "200154";
+		strTO = "Verify that drop down icon is displayed besides each chat widgets when there are multiple web chat widgets created";
+
+		// mWeb.setUp();
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		boolean b = true;
+		while (b) {
+			Thread.sleep(4000);
+			b = objWebChatWidget.deleteAllwidget();
+		}
+		objWebChatWidget.clickOnCreateANewChatWidget().selectStream(WebData.streamAlert).clickOnNext().clickOnNext()
+				.clickOnClose();
+		objWebChatWidget.clickOnCreateANewChatWidget().selectStream(WebData.streamAlert).clickOnNext().clickOnNext()
+				.clickOnClose();
+		objWebChatWidget.clickOnCreateANewChatWidget().selectStream(WebData.streamAlert).clickOnNext().clickOnNext()
+				.clickOnClose();
+		objWebChatWidget.verDropDownIconIsDisForAllWidget();
+
+		gstrResult = "PASS";
+	}
+
+	// June 05 2017
+	@Test(priority = 31, description = "Verify that appropriate message'Changes successfully saved.' is displayed when Admin successfully changes the chat widget name")
+	public void FTS200215() throws Exception {
+
+		TCID = "200215";
+		strTO = "Verify that appropriate message 'Changes successfully saved.' is displayed when Admin successfully changes the chat widget name";
+
+		// mWeb.setUp();
+		WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+
+		WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		// Page Functions
+		objWebChatWidget
+				// .scrollDownIcon()
+				.clickOnEditChatWidgetIcon("").enterChatWidgetName(WebData.widgetName).clickOnSaveChatWidgetIcon()
+				.verUpdateToastMessage();
+
+		gstrResult = "PASS";
+	}
+	
+	// June 05 2017
+		@Test(priority = 32, description = "Verify that all the settings are displayed only after 'Next' button is clicked")
+		public void FTS200218() throws Exception {
+
+			TCID = "200218";
+			strTO = "Verify that all the settings are displayed only after 'Next' button is clicked";
+
+			// mWeb.setUp();
+			WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+			//Page Functions
+			boolean b = true;
+			while (b) {
+				Thread.sleep(4000);
+				b = objWebChatWidget.deleteAllwidget();
+			}
+			objWebChatWidget.clickOnCreateANewChatWidget();
+			objWebChatWidget.selectStream(WebData.streamAlert);
+			objWebChatWidget.clickOnNext();
+			objWebChatWidget.selAnchoredRadioBtn().clickOnWidgetHeightField().enterValueInHeightField();
+			objWebChatWidget.enterwidgetColor().clickOnNext().clickOnClose();
+			objWebChatWidget.clickOnCustomizeOfLast();
+			objWebChatWidget.verValuesCustomizescreen().clickOnCloseButtonOnConfiguringSettings();
+			
+
+			gstrResult = "PASS";
+		}
+
+		// June 05 2017
+		@Test(priority = 33, description = "Verify that when 'Back' is clicked, previous changes are undoes")
+		public void RTS200219() throws Exception {
+
+			TCID = "200219";
+			strTO = "Verify that when 'Back' is clicked, previous changes are undoes";
+
+			// mWeb.setUp();
+			WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+			WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+			//Page Functions
+			objWebChatWidget.clickOnCreateANewChatWidget();
+			objWebChatWidget.selectStream(WebData.streamAlert);
+			objWebChatWidget.clickOnNext();
+			objWebChatWidget.selAnchoredRadioBtn().clickOnWidgetHeightField().enterValueInHeightField();
+			objWebChatWidget.enterwidgetColor().clickOnBack();
+			objWebChatWidget.selectStream(WebData.streamAlert);
+			objWebChatWidget.clickOnNext();
+			objWebChatWidget.verFloatingRadioSelectedByDefault();
+			objWebChatWidget.verWidthHightByDefault600();
+			objWebChatWidget.verWidthWidthByDefault500();
+			objWebChatWidget.verWidgetColorByDefaultGray();
+			objWebChatWidget.verAgentBubbleByDefaultLightGray();
+			objWebChatWidget.verUserBubbleByDefaultBlue();
+			objWebChatWidget.verWidgetHeaderTextByDefaultWhite();
+			objWebChatWidget.verTextColorOfAgentMessageBlackByDefault();
+			objWebChatWidget.verTextColorOfConsumerMessageWhiteByDefault().clickOnCloseButtonOnConfiguringSettings();
+			gstrResult = "PASS";
+		}
+		
+		// feb 15 2017
+
+		@Test(priority = 34, description = "Verfiy that confirmation dialog box 'Confirm delete chat widget' is displayed when Admin deletes the web chat widget" +
+		"\n Verify that 'Are you sure you want to delete this Chat widget? This widget will be disabled on your website.'"
+		+ " is displayed along with 'Cancel' and 'Delete' buttons" + 
+		"Verify that Web chat widget is not deleted when 'Cancel' button is clicked.")
+		public void FTS200221And200222And200223() throws Exception {
+
+			TCID = "200221And200222And200223";
+			strTO = "Verfiy that confirmation dialog box 'Confirm delete chat widget' is displayed when Admin deletes the web chat widget";
+
+			// mWeb.setUp();
+			WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+			WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+		//Page Functions
+			objWebChatWidget.clickOnCreateANewChatWidget();
+			objWebChatWidget.selectStream(WebData.streamAlert);
+			objWebChatWidget.clickOnNext().clickOnNext().clickOnClose();
+
+			objWebChatWidget.clickOnEditChatWidgetIcon("Chat widget").enterChatWidgetName(WebData.widgetName1)
+					.clickOnSaveChatWidgetIcon().verChatWidget(WebData.widgetName1)
+					.clickOnEditChatWidgetIcon(WebData.widgetName1).clickOnDelChatWidgetIcon().verConfirmDeleteBox()
+					.verConfirmDeleteMessage(WebData.widgetName1).verBottonsInDeleteBox().clickOnCancleButton().clickOnCloseInDelete()
+					.verChatWidgetIsDisplaying(WebData.widgetName1);
+
+			gstrResult = "PASS";
+
+		}
+		
+		// June 14 2017
+		@Test(priority = 35,description = "Verify that current visitors can start a new chat with teh deleted Chat widget" + 
+		"\n Verify that deleted Widget is not loaded to new visitors")
+		public void BQS200225And200226() throws Exception {
+
+			TCID = "200225 And 200226";
+			strTO = "Verify that current visitors can start a new chat with teh deleted Chat widget"
+					+ "\n Verify that deleted Widget is not loaded to new visitors";
+
+			// mWeb.setUp();
+			WebSignUpAndSignIn objWebSignUpAndSignIn = new WebSignUpAndSignIn();
+			WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+			ConfiguredWebsite objConfiguredWebsite = new ConfiguredWebsite(wdriver);
+			
+			//Page Function
+			boolean b = true;
+			while (b) {
+				Thread.sleep(4000);
+				b = objWebChatWidget.deleteAllwidget();
+			}
+			objWebChatWidget.clickOnCreateANewChatWidget();
+			objWebChatWidget.selectStream(WebData.streamAlert);
+			objWebChatWidget.clickOnNext().clickOnNext().clickOnCopyCode().clickOnClose();
+			objConfiguredWebsite.openNewTab();
+
+			System.out.println((wdriver.getWindowHandles()).size() + "     this no of windows");
+			String mw = wdriver.getWindowHandle();
+			Set<String> aw = wdriver.getWindowHandles();
+			Iterator<String> itr = aw.iterator();
+			while (itr.hasNext()) {
+				String cw = itr.next().toString();
+				if (!cw.contains(mw)) {
+					wdriver.switchTo().window(cw);
+					objWebSignUpAndSignIn.launchConfiguredWebsite();
+					objConfiguredWebsite.clearTextArea().enterCodeInTextArea().clickOnQaButton().clickOnRunButton();
+					objConfiguredWebsite.clickOnWebChatWidgetIcon();
+				}
+			}
+			wdriver.switchTo().window(mw);
+			objWebChatWidget.clickOnEditChatWidgetIcon("Chat widget").enterChatWidgetName(WebData.widgetName1)
+			.clickOnSaveChatWidgetIcon().verChatWidget(WebData.widgetName1)
+			.clickOnEditChatWidgetIcon(WebData.widgetName1).clickOnDelChatWidgetIcon().clickOnDelete();
+			
+			
+			while (itr.hasNext()) {
+				String cw = itr.next().toString();
+				if (!cw.contains(mw)) {
+					wdriver.switchTo().window(cw);
+					objConfiguredWebsite.enterMsgInWebChatWidget(WebData.webChatMsg).clickOnSendButton()
+					.verSentMsgFromAgent(WebData.webChatMsg);
+					objWebSignUpAndSignIn.launchConfiguredWebsite();
+					objConfiguredWebsite.clearTextArea().enterCodeInTextArea().clickOnQaButton().clickOnRunButton();
+					objConfiguredWebsite.verWidgetIsNotdispalyed();
+				}
+			}
+		}
+		
+		// June 05 2017
+		@Test(priority = 36, description = "Verify that if one chat widget is created, 'Install code' section is open by default.")
+		public void BQS200152() throws Exception {
+
+			TCID = "200154";
+			strTO = "Verify that if one chat widget is created, 'Install code' section is open by default.";
+
+			// mWeb.setUp();
+			WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+			boolean b = true;
+			while (b) {
+				Thread.sleep(4000);
+				b = objWebChatWidget.deleteAllwidget();
+			}
+			objWebChatWidget.clickOnCreateANewChatWidget();
+			objWebChatWidget.selectStream(WebData.streamAlert).clickOnNext().clickOnNext().clickOnClose();
+			objWebChatWidget.verInstallCodeByDefDisplayed();
+		}
+		
+		/**********************************************************************************
+		 * Description : Verify that selected Stream is displayed below 
+		 * "1. Configure general settings (required)" in widget information screen
+		 * Date: 25-July-2017 Author : Harisha
+		 **********************************************************************************/
+	
+		// June 05 2017
+		@Test(priority = 37, description = "Verify that selected Stream is displayed below '1. Configure general "
+				+ "settings (required)' in widget information screen")
+		public void FTS200409() throws Exception {
+
+			TCID = "200154";
+			strTO = "Verify that selected Stream is displayed below '1. Configure general "
+				+ "settings (required)' in widget information screen";
+
+			WebChatWidget objWebChatWidget = new WebChatWidget(wdriver);
+
+			objWebChatWidget.verSelectedStream(WebData.streamAlert);
+			
+			gstrResult = "PASS";
+		}
+		
+}

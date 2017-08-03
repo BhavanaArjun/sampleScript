@@ -1,0 +1,85 @@
+<project xmlns="http://maven.apache.or	g/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.qsgsoft</groupId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  
+  <build>
+	<resources>
+		<resource>
+			<directory>/var/lib/jenkins/workspace/WebSmokeAutomation/com.qsgsoft.pypestream.core/src/test/java/**</directory>
+			<filtering>true</filtering>
+		</resource>
+	</resources>
+	</build>
+	<profiles>
+		<profile>
+			<id>SmokeSuite</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.12</version>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>WebSmokeSuite</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.12</version>
+				                <configuration>
+                					<parallel>methods</parallel>
+          						<threadCount>2</threadCount>
+							<redirectTestOutputToFile>false</redirectTestOutputToFile>
+                				</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+  
+  <dependencies>
+		<dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>4.1.2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8.7</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+           		<groupId>com.saucelabs</groupId>
+            		<artifactId>sauce_testng</artifactId>
+            		<version>2.1.23</version>
+            		<scope>test</scope>
+        	</dependency>
+
+		<dependency>
+			<groupId>net.sourceforge.jexcelapi</groupId>
+			<artifactId>jxl</artifactId>
+			<version>2.6</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.48.2</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.11</version>
+		</dependency>
+  </dependencies>
+  <artifactId>com.qsgsoft.pypestream</artifactId>
+</project>
