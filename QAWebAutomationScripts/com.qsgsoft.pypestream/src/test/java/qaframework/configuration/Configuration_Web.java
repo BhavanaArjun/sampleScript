@@ -86,7 +86,7 @@ public class Configuration_Web {
             System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
             /*capability.setBrowserName("chrome");
             capability.setPlatform(Platform.LINUX);*/
-            wdriver = new RemoteWebDriver(new URL("http://10.0.89.220:4445/wd/hub"), DesiredCapabilities().chrome());
+            wdriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities().chrome());
             
             wdriver.manage().deleteAllCookies();
             wdriver.manage().timeouts().implicitlyWait(WaitTimeConstants.WAIT_TIME, TimeUnit.SECONDS);
@@ -100,7 +100,7 @@ public class Configuration_Web {
 			cap.setBrowserName("firefox");
 			cap.setPlatform(Platform.WINDOWS);
 			
-			wdriver = new RemoteWebDriver(new URL("http://10.0.89.220:4445/wd/hub"), cap);
+			wdriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
 			wdriver.manage().window().maximize();
 			wdriver.manage().timeouts().implicitlyWait(WaitTimeConstants.WAIT_TIME, TimeUnit.SECONDS);
 			System.out.println("Firefox driver Session has Started");
