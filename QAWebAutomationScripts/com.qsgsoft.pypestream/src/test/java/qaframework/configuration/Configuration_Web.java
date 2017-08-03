@@ -81,11 +81,11 @@ public class Configuration_Web {
          */
         
         if(myBrowser.equals("chrome")){
-            //DesiredCapabilities capability = new DesiredCapabilities().chrome();
+            DesiredCapabilities capability = new DesiredCapabilities().chrome();
             
-            System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
-            /*capability.setBrowserName("chrome");
-            capability.setPlatform(Platform.LINUX);*/
+            //System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
+            capability.setBrowserName("chrome");
+            capability.setPlatform(Platform.LINUX);
             wdriver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), DesiredCapabilities().chrome());
             
             wdriver.manage().deleteAllCookies();
